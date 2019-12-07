@@ -1,4 +1,6 @@
 from django.utils.translation import ugettext_lazy as _
+from django.conf import settings
+
 from rest_framework import HTTP_HEADER_ENCODING, authentication
 
 from .exceptions import AuthenticationFailed, InvalidToken, TokenError
@@ -111,6 +113,11 @@ class JWTAuthentication(authentication.BaseAuthentication):
             user = User.objects.get(**{api_settings.USER_ID_FIELD: user_id})
         except User.DoesNotExist:
             raise AuthenticationFailed(_('User not found'), code='user_not_found')
+        except ValueError:
+            if settings.DEBUG:
+                raise AuthenticationFailed(_('Specified user for this token is invalid'), code='user_invalid')
+            else:
+                raise AuthenticationFailed(_('User not found'), code='user_not_found')
 
         if not user.is_active:
             raise AuthenticationFailed(_('User is inactive'), code='user_inactive')
