@@ -1,0 +1,99 @@
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <rene@roadbearstudios.com>, 2020.
+msgid ""
+msgstr ""
+"Project-Id-Version: djangorestframework_simplejwt\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-05-22 16:26+0200\n"
+"Last-Translator: rene <rene@roadbearstudios.com>\n"
+"Language: nl_NL\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: authentication.py:75
+msgid "Authorization header must contain two space-delimited values"
+msgstr "Authorisatie header moet twee waarden bevatten, gescheiden door een spatie"
+
+#: authentication.py:96
+msgid "Given token not valid for any token type"
+msgstr "Het token is voor geen enkel token-type geldig"
+
+#: authentication.py:107 authentication.py:129
+msgid "Token contained no recognizable user identification"
+msgstr "Token bevat geen herkenbare gebruikersidentificatie"
+
+#: authentication.py:112
+msgid "User not found"
+msgstr "Gebruiker niet gevonden"
+
+#: authentication.py:115
+msgid "User is inactive"
+msgstr "Gebruiker is inactief"
+
+#: backends.py:21
+msgid "Unrecognized algorithm type '{}'"
+msgstr "Niet herkend algoritme type '{}"
+
+#: backends.py:58 exceptions.py:38 tokens.py:44
+msgid "Token is invalid or expired"
+msgstr "Token is niet geldig of verlopen"
+
+#: serializers.py:24
+msgid "No active account found with the given credentials"
+msgstr "Geen actief account gevonden voor deze gegevens"
+
+#: settings.py:59
+msgid ""
+"The '{}' setting has been removed. Please refer to '{}' for available "
+"settings."
+msgstr "De '{}' instelling bestaat niet meer. Zie '{}' for beschikbare"
+"instellingen."
+
+#: token_blacklist/admin.py:72
+msgid "jti"
+msgstr "jti"
+
+#: token_blacklist/admin.py:77
+msgid "user"
+msgstr "gebruiker"
+
+#: token_blacklist/admin.py:82
+msgid "created at"
+msgstr "aangemaakt op"
+
+#: token_blacklist/admin.py:87
+msgid "expires at"
+msgstr "verloopt op"
+
+#: token_blacklist/apps.py:7
+msgid "Token Blacklist"
+msgstr "Token Blacklist"
+
+#: tokens.py:30
+msgid "Cannot create token with no type or lifetime"
+msgstr "Kan geen token maken zonder type of levensduur"
+
+#: tokens.py:98
+msgid "Token has no id"
+msgstr "Token heeft geen id"
+
+#: tokens.py:109
+msgid "Token has no type"
+msgstr "Token heeft geen type"
+
+#: tokens.py:112
+msgid "Token has wrong type"
+msgstr "Token heeft het verkeerde type"
+
+#: tokens.py:149
+msgid "Token has no '{}' claim"
+msgstr "Token heeft geen '{}' recht"
+
+#: tokens.py:153
+msgid "Token '{}' claim has expired"
+msgstr "Token '{}' recht is verlopen"
+
+#: tokens.py:192
+msgid "Token is blacklisted"
+msgstr "Token is ge-blacklist"
