@@ -11,6 +11,7 @@ class TokenViewBase(generics.GenericAPIView):
     authentication_classes = ()
 
     serializer_class = None
+    queryset = ''
 
     www_authenticate_realm = 'api'
 
