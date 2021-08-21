@@ -28,7 +28,7 @@ class TokenViewBase(generics.GenericAPIView):
         except TokenError as e:
             raise InvalidToken(e.args[0])
 
-        return Response(serializer.validated_data, status=status.HTTP_200_OK)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
 
 class TokenObtainPairView(TokenViewBase):

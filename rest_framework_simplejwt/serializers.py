@@ -54,6 +54,9 @@ class TokenObtainSerializer(serializers.Serializer):
 
         return {}
 
+    def to_representation(self, instance):
+        return instance
+
     @classmethod
     def get_token(cls, user):
         raise NotImplementedError('Must implement `get_token` method for `TokenObtainSerializer` subclasses')
@@ -122,6 +125,9 @@ class TokenRefreshSerializer(serializers.Serializer):
 
         return data
 
+    def to_representation(self, instance):
+        return instance
+
 
 class TokenRefreshSlidingSerializer(serializers.Serializer):
     token = serializers.CharField()
@@ -151,3 +157,6 @@ class TokenVerifySerializer(serializers.Serializer):
                 raise ValidationError("Token is blacklisted")
 
         return {}
+
+    def to_representation(self, instance):
+        return instance
