@@ -1,4 +1,5 @@
 from datetime import timedelta
+from typing import Dict, Any
 from uuid import uuid4
 
 from django.conf import settings
@@ -48,7 +49,7 @@ class Token:
                 self.verify()
         else:
             # New token.  Skip all the verification steps.
-            self.payload = {api_settings.TOKEN_TYPE_CLAIM: self.token_type}
+            self.payload: Dict[str, Any] = {api_settings.TOKEN_TYPE_CLAIM: self.token_type}
 
             # Set "exp" claim with default value
             self.set_exp(from_time=self.current_time, lifetime=self.lifetime)
