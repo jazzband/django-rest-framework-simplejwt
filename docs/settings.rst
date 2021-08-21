@@ -37,6 +37,7 @@ Some of Simple JWT's behavior can be customized through settings variables in
 
       'AUTH_TOKEN_CLASSES': ('rest_framework_simplejwt.tokens.AccessToken',),
       'TOKEN_TYPE_CLAIM': 'token_type',
+      'TOKEN_USER_CLASS': 'rest_framework_simplejwt.models.TokenUser',
 
       'JTI_CLAIM': 'jti',
 
@@ -234,6 +235,14 @@ The claim name that is used to store a token's unique identifier.  This
 identifier is used to identify revoked tokens in the blacklist app.  It may be
 necessary in some cases to use another claim besides the default "jti" claim to
 store such a value.
+
+``TOKEN_USER_CLASS``
+--------------------
+
+A stateless user object which is backed by a validated token. Used only for
+the experimental JWTTokenUserAuthentication authentication backend. The value
+is a dotted path to your subclass of ``rest_framework_simplejwt.models.TokenUser``,
+which also is the default.
 
 ``SLIDING_TOKEN_LIFETIME``
 --------------------------
