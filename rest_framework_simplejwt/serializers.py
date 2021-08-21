@@ -117,6 +117,7 @@ class TokenRefreshSerializer(serializers.Serializer):
 
             refresh.set_jti()
             refresh.set_exp()
+            refresh.set_iat()
 
             data['refresh'] = str(refresh)
 
@@ -133,8 +134,9 @@ class TokenRefreshSlidingSerializer(serializers.Serializer):
         # passed
         token.check_exp(api_settings.SLIDING_TOKEN_REFRESH_EXP_CLAIM)
 
-        # Update the "exp" claim
+        # Update the "exp" and "iat" claims
         token.set_exp()
+        token.set_iat()
 
         return {'token': str(token)}
 

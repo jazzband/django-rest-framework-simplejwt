@@ -50,8 +50,9 @@ class Token:
             # New token.  Skip all the verification steps.
             self.payload = {api_settings.TOKEN_TYPE_CLAIM: self.token_type}
 
-            # Set "exp" claim with default value
+            # Set "exp" and "iat" claims with default value
             self.set_exp(from_time=self.current_time, lifetime=self.lifetime)
+            self.set_iat(at_time=self.current_time)
 
             # Set "jti" claim
             self.set_jti()
@@ -124,6 +125,9 @@ class Token:
     def set_exp(self, claim='exp', from_time=None, lifetime=None):
         """
         Updates the expiration time of a token.
+
+        See here:
+        https://tools.ietf.org/html/rfc7519#section-4.1.4
         """
         if from_time is None:
             from_time = self.current_time
@@ -132,6 +136,18 @@ class Token:
             lifetime = self.lifetime
 
         self.payload[claim] = datetime_to_epoch(from_time + lifetime)
+
+    def set_iat(self, claim='iat', at_time=None):
+        """
+        Updates the time at which the token was issued.
+
+        See here:
+        https://tools.ietf.org/html/rfc7519#section-4.1.6
+        """
+        if at_time is None:
+            at_time = self.current_time
+
+        self.payload[claim] = datetime_to_epoch(at_time)
 
     def check_exp(self, claim='exp', current_time=None):
         """
