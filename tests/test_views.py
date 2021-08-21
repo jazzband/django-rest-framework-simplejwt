@@ -335,3 +335,72 @@ class TestTokenVerifyView(APIViewTestCase):
         res = self.view_post(data={'token': str(token)})
         self.assertEqual(res.status_code, 200)
         self.assertEqual(len(res.data), 0)
+
+
+class TestTokenBlacklistView(APIViewTestCase):
+    view_name = 'token_blacklist'
+
+    def setUp(self):
+        self.username = 'test_user'
+        self.password = 'test_password'
+
+        self.user = User.objects.create_user(
+            username=self.username,
+            password=self.password,
+        )
+
+    def test_fields_missing(self):
+        res = self.view_post(data={})
+        self.assertEqual(res.status_code, 400)
+        self.assertIn('refresh', res.data)
+
+    def test_it_should_return_401_if_token_invalid(self):
+        token = RefreshToken()
+        del token['exp']
+
+        res = self.view_post(data={'refresh': str(token)})
+        self.assertEqual(res.status_code, 401)
+        self.assertEqual(res.data['code'], 'token_not_valid')
+
+        token.set_exp(lifetime=-timedelta(seconds=1))
+
+        res = self.view_post(data={'refresh': str(token)})
+        self.assertEqual(res.status_code, 401)
+        self.assertEqual(res.data['code'], 'token_not_valid')
+
+    def test_it_should_return_if_everything_ok(self):
+        refresh = RefreshToken()
+        refresh['test_claim'] = 'arst'
+
+        # View returns 200
+        now = aware_utcnow() - api_settings.ACCESS_TOKEN_LIFETIME / 2
+
+        with patch('rest_framework_simplejwt.tokens.aware_utcnow') as fake_aware_utcnow:
+            fake_aware_utcnow.return_value = now
+
+            res = self.view_post(data={'refresh': str(refresh)})
+
+        self.assertEqual(res.status_code, 200)
+
+        self.assertDictEqual(res.data, {})
+
+    def test_it_should_return_401_if_token_is_blacklisted(self):
+        refresh = RefreshToken()
+        refresh['test_claim'] = 'arst'
+
+        # View returns 200
+        now = aware_utcnow() - api_settings.ACCESS_TOKEN_LIFETIME / 2
+
+        with patch('rest_framework_simplejwt.tokens.aware_utcnow') as fake_aware_utcnow:
+            fake_aware_utcnow.return_value = now
+
+            res = self.view_post(data={'refresh': str(refresh)})
+
+        self.assertEqual(res.status_code, 200)
+
+        self.view_name = 'token_refresh'
+        res = self.view_post(data={'refresh': str(refresh)})
+        # make sure other tests are not affected
+        del self.view_name
+
+        self.assertEqual(res.status_code, 401)

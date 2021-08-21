@@ -151,3 +151,15 @@ class TokenVerifySerializer(serializers.Serializer):
                 raise ValidationError("Token is blacklisted")
 
         return {}
+
+
+class TokenBlacklistSerializer(serializers.Serializer):
+    refresh = serializers.CharField()
+
+    def validate(self, attrs):
+        refresh = RefreshToken(attrs['refresh'])
+        try:
+            refresh.blacklist()
+        except AttributeError:
+            pass
+        return {}

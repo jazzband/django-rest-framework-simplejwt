@@ -84,3 +84,14 @@ class TokenVerifyView(TokenViewBase):
 
 
 token_verify = TokenVerifyView.as_view()
+
+
+class TokenBlacklistView(TokenViewBase):
+    """
+    Takes a token and blacklists it. Must be used with the
+    `rest_framework_simplejwt.token_blacklist` app installed.
+    """
+    serializer_class = serializers.TokenBlacklistSerializer
+
+
+token_blacklist = TokenBlacklistView.as_view()
