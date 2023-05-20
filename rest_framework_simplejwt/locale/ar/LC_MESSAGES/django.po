@@ -1,0 +1,121 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <salem.domani@gmail.com>, 2022.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: djangorestframework_simplejwt\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-11-25 13:20+0300\n"
+"Last-Translator: Salem Domani <salem.domani@gmail.com>\n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+#: rest_framework_simplejwt/authentication.py:78
+msgid "Authorization header must contain two space-delimited values"
+msgstr "الـ header الخاص بالمصادقة يجب أن يحتوي على قيمتين بينهما مسافة"
+
+#: rest_framework_simplejwt/authentication.py:104
+msgid "Given token not valid for any token type"
+msgstr "الرمز المعطى ليس لديه نوع صالح"
+
+#: rest_framework_simplejwt/authentication.py:116
+#: rest_framework_simplejwt/authentication.py:143
+msgid "Token contained no recognizable user identification"
+msgstr "هذا الرمز لا يحتوي على معلومات تعرف المستخدم"
+
+#: rest_framework_simplejwt/authentication.py:121
+msgid "User not found"
+msgstr "لم يتم العثور على المستخدم"
+
+#: rest_framework_simplejwt/authentication.py:124
+msgid "User is inactive"
+msgstr "المستخدم غير فعال"
+
+#: rest_framework_simplejwt/backends.py:67
+msgid "Unrecognized algorithm type '{}'"
+msgstr "لم يتم التعرف على نوع الخوارزمية '{}'"
+
+#: rest_framework_simplejwt/backends.py:73
+msgid "You must have cryptography installed to use {}."
+msgstr "يجب عليك تنزيل مكتبة cryptography من أجل استخدام {}."
+
+#: rest_framework_simplejwt/backends.py:88
+msgid ""
+"Unrecognized type '{}', 'leeway' must be of type int, float or timedelta."
+msgstr "نوع '{}' غير متعرف عليه 'leeway' يجب أن يكون int, float أو timedelta."
+
+#: rest_framework_simplejwt/backends.py:102
+#: rest_framework_simplejwt/backends.py:152
+#: rest_framework_simplejwt/exceptions.py:38
+#: rest_framework_simplejwt/tokens.py:44
+msgid "Token is invalid or expired"
+msgstr "هذا الرمز غير صالح أو منتهي الصلاحية"
+
+#: rest_framework_simplejwt/backends.py:150
+msgid "Invalid algorithm specified"
+msgstr "الخوارزمية المختارة غير صالحة"
+
+#: rest_framework_simplejwt/serializers.py:30
+msgid "No active account found with the given credentials"
+msgstr "لم يتم العثور على مسنخدم بالمعلومات المعطاة"
+
+#: rest_framework_simplejwt/settings.py:70
+msgid ""
+"The '{}' setting has been removed. Please refer to '{}' for available "
+"settings."
+msgstr "تم حذف الخيار '{}'. الرجاء التأكد من الخيارات المتاحة لدى '{}'"
+"."
+
+#: rest_framework_simplejwt/token_blacklist/admin.py:68
+msgid "jti"
+msgstr "jti"
+
+#: rest_framework_simplejwt/token_blacklist/admin.py:74
+msgid "user"
+msgstr "مستخدم"
+
+#: rest_framework_simplejwt/token_blacklist/admin.py:80
+msgid "created at"
+msgstr "أنشأت بتاريخ"
+
+#: rest_framework_simplejwt/token_blacklist/admin.py:86
+msgid "expires at"
+msgstr "انتهت صلاحيتها بتاريخ"
+
+#: rest_framework_simplejwt/token_blacklist/apps.py:7
+msgid "Token Blacklist"
+msgstr "اللائحة السوداء للرموز"
+
+#: rest_framework_simplejwt/tokens.py:30
+msgid "Cannot create token with no type or lifetime"
+msgstr "لا يمكن إنشاء رمز بدون نوع او حياة"
+
+#: rest_framework_simplejwt/tokens.py:102
+msgid "Token has no id"
+msgstr "هذا رمز لا يحتوي على id"
+
+#: rest_framework_simplejwt/tokens.py:115
+msgid "Token has no type"
+msgstr "هذا رمز ليس لديه نوع"
+
+#: rest_framework_simplejwt/tokens.py:118
+msgid "Token has wrong type"
+msgstr "هذا رمز لديه نوع خاطئ"
+
+#: rest_framework_simplejwt/tokens.py:170
+msgid "Token has no '{}' claim"
+msgstr "هذا الرمز ليس لديه '{}'"
+
+#: rest_framework_simplejwt/tokens.py:175
+msgid "Token '{}' claim has expired"
+msgstr "'{}' المتعلقة بالرمز قد انتهت صلاحيتها"
+
+#: rest_framework_simplejwt/tokens.py:230
+msgid "Token is blacklisted"
+msgstr "هذا الرمز تم نقله إلى اللائحة السوداء"
