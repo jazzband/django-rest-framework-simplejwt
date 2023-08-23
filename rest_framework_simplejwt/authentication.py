@@ -2,6 +2,7 @@ from typing import Optional, Set, Tuple, TypeVar
 
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import AbstractBaseUser
+from django.utils.crypto import constant_time_compare
 from django.utils.translation import gettext_lazy as _
 from rest_framework import HTTP_HEADER_ENCODING, authentication
 from rest_framework.request import Request
@@ -10,7 +11,7 @@ from .exceptions import AuthenticationFailed, InvalidToken, TokenError
 from .models import TokenUser
 from .settings import api_settings
 from .tokens import Token
-from .utils import get_md5_hash_password
+from .utils import get_fallback_token_auth_hash, get_token_auth_hash
 
 AUTH_HEADER_TYPES = api_settings.AUTH_HEADER_TYPES
 
@@ -135,9 +136,17 @@ class JWTAuthentication(authentication.BaseAuthentication):
             raise AuthenticationFailed(_("User is inactive"), code="user_inactive")
 
         if api_settings.CHECK_REVOKE_TOKEN:
-            if validated_token.get(
-                api_settings.REVOKE_TOKEN_CLAIM
-            ) != get_md5_hash_password(user.password):
+            validation_claim = validated_token.get(api_settings.REVOKE_TOKEN_CLAIM)
+            if (
+                validation_claim is None
+                or not constant_time_compare(
+                    validation_claim, get_token_auth_hash(user)
+                )
+                and not any(
+                    constant_time_compare(validation_claim, fallback_auth_hash)
+                    for fallback_auth_hash in get_fallback_token_auth_hash(user)
+                )
+            ):
                 raise AuthenticationFailed(
                     _("The user's password has been changed."), code="password_changed"
                 )

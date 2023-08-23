@@ -16,7 +16,7 @@ from .utils import (
     datetime_from_epoch,
     datetime_to_epoch,
     format_lazy,
-    get_md5_hash_password,
+    get_token_auth_hash,
 )
 
 if TYPE_CHECKING:
@@ -208,9 +208,7 @@ class Token:
         token[api_settings.USER_ID_CLAIM] = user_id
 
         if api_settings.CHECK_REVOKE_TOKEN:
-            token[api_settings.REVOKE_TOKEN_CLAIM] = get_md5_hash_password(
-                user.password
-            )
+            token[api_settings.REVOKE_TOKEN_CLAIM] = get_token_auth_hash(user)
 
         return token
 
