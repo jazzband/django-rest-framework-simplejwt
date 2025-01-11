@@ -394,6 +394,15 @@ class TestToken(TestCase):
         token = MyToken.for_user(self.user)
         self.assertEqual(token[api_settings.USER_ID_CLAIM], self.username)
 
+    def test_for_user_fails_if_is_active_false(self):
+        # works with is_active=True
+        token = MyToken.for_user(self.user)
+
+        # fails with is_active=False
+        self.user.is_active = False
+        with self.assertRaises(TokenError):
+            token = MyToken.for_user(self.user)
+
     @override_api_settings(CHECK_REVOKE_TOKEN=True)
     def test_revoke_token_claim_included_in_authorization_token(self):
         token = MyToken.for_user(self.user)

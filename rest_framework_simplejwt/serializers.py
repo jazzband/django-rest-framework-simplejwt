@@ -63,7 +63,7 @@ class TokenObtainSerializer(serializers.Serializer):
 
     @classmethod
     def get_token(cls, user: AuthUser) -> Token:
-        return cls.token_class.for_user(user)  # type: ignore
+        return cls.token_class.for_validated_user(user)  # type: ignore
 
 
 class TokenObtainPairSerializer(TokenObtainSerializer):
