@@ -43,3 +43,7 @@ for the view, which is in turn used to generate the view's access token.
 
 As with the standard token views, you'll also need to include a url route to
 your subclassed view.
+
+You can also get the claim from request with:
+.. code-block:: python
+request._auth.get("name")
