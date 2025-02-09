@@ -574,7 +574,7 @@ class TestTokenBlacklistSerializer(TestCase):
             fake_aware_utcnow.return_value = now
             self.assertTrue(s.is_valid())
 
-        self.assertDictEqual(s.validated_data, {})
+        self.assertDictEqual(s.validated_data, {"message": "Token blacklisted"})
 
     def test_it_should_blacklist_refresh_token_if_everything_ok(self):
         self.assertEqual(OutstandingToken.objects.count(), 0)

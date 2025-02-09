@@ -116,5 +116,12 @@ class TokenBlacklistView(TokenViewBase):
 
     _serializer_class = api_settings.TOKEN_BLACKLIST_SERIALIZER
 
+    def post(self, request: Request, *args, **kwargs) -> Response:
+        response = super().post(request, *args, **kwargs)
+        serializer_data = response.data
+        serializer_data["message"] = "Token blacklisted"
+
+        return Response(serializer_data, status=response.status_code)
+
 
 token_blacklist = TokenBlacklistView.as_view()
