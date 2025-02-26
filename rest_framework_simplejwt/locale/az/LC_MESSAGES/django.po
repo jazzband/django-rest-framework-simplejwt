@@ -1,0 +1,117 @@
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <sevdimaliisa@gmail.com>, 2023.
+msgid ""
+msgstr ""
+"Project-Id-Version: djangorestframework_simplejwt\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-04-07 22:56+0200\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Sevdimali İsa <sevdimaliisa@gmail.com>\n"
+"Language-Team: \n"
+"Language: az\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 3.3.1\n"
+
+#: authentication.py:78
+msgid "Authorization header must contain two space-delimited values"
+msgstr "Avtorizasiya başlığında boşluqla ayrılmış iki dəyər olmalıdır"
+
+#: authentication.py:104
+msgid "Given token not valid for any token type"
+msgstr "Verilən token hər hansı bir token növü üçün keçərli deyil"
+
+#: authentication.py:116 authentication.py:143
+msgid "Token contained no recognizable user identification"
+msgstr "Token heç bir tanınan istifadəçi identifikasiyasına malik deyil"
+
+#: authentication.py:121
+msgid "User not found"
+msgstr "İstifadəçi tapılmadı"
+
+#: authentication.py:124
+msgid "User is inactive"
+msgstr "İstifadəçi aktiv deyil"
+
+#: backends.py:67
+msgid "Unrecognized algorithm type '{}'"
+msgstr "Tanınmayan alqortim tipi '{}'"
+
+#: backends.py:73
+msgid "You must have cryptography installed to use {}."
+msgstr "{} istifadə edə bilmək üçün cryptography yükləməniz lazımdır."
+
+#: backends.py:88
+msgid ""
+"Unrecognized type '{}', 'leeway' must be of type int, float or timedelta."
+msgstr ""
+"Tanınmayan tip '{}', 'leeway' int, float və timedelta tipindən birində "
+"olmalıdır."
+
+#: backends.py:102 backends.py:152 exceptions.py:38 tokens.py:44
+msgid "Token is invalid or expired"
+msgstr "Token etibarsızdır və ya vaxtı keçmişdir"
+
+#: backends.py:150
+msgid "Invalid algorithm specified"
+msgstr "Etibarsız alqoritm göstərildi"
+
+#: serializers.py:30
+msgid "No active account found with the given credentials"
+msgstr "Verilən məlumatlar üçün aktiv hesab tapılmadı"
+
+#: settings.py:70
+msgid ""
+"The '{}' setting has been removed. Please refer to '{}' for available "
+"settings."
+msgstr "'{}' parametri silindi. Mövcud parametrlər üçün '{}' ünvanına baxın."
+
+#: token_blacklist/admin.py:68
+msgid "jti"
+msgstr "jti"
+
+#: token_blacklist/admin.py:74
+msgid "user"
+msgstr "istifadəçi"
+
+#: token_blacklist/admin.py:80
+msgid "created at"
+msgstr "yaranma tarixi"
+
+#: token_blacklist/admin.py:86
+msgid "expires at"
+msgstr "bitmə tarixi"
+
+#: token_blacklist/apps.py:7
+msgid "Token Blacklist"
+msgstr "Token qara siyahısı"
+
+#: tokens.py:30
+msgid "Cannot create token with no type or lifetime"
+msgstr "Tipi və ya etibarlılıq vaxtı olmadan token yaratmaq olmaz"
+
+#: tokens.py:102
+msgid "Token has no id"
+msgstr "Token'in id-si yoxdur"
+
+#: tokens.py:115
+msgid "Token has no type"
+msgstr "Token-nin tipi yoxdur"
+
+#: tokens.py:118
+msgid "Token has wrong type"
+msgstr "Token-nin tipi yanlışdır"
+
+#: tokens.py:170
+msgid "Token has no '{}' claim"
+msgstr "Token-in '{}' claim-i yoxdur"
+
+#: tokens.py:175
+msgid "Token '{}' claim has expired"
+msgstr "Token-in '{}' claim-i bitmişdir"
+
+#: tokens.py:230
+msgid "Token is blacklisted"
+msgstr "Token qara siyahıya salınmışdır"
