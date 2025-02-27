@@ -3,6 +3,7 @@ from typing import Any, Optional, TypeVar
 
 from django.contrib import admin
 from django.contrib.auth.models import AbstractBaseUser
+from django.core.management import call_command
 from django.db.models import QuerySet
 from django.utils.translation import gettext_lazy as _
 from rest_framework.request import Request
@@ -67,6 +68,29 @@ class BlacklistedTokenAdmin(admin.ModelAdmin):
         "token__jti",
     )
     ordering = ("token__user",)
+
+    @admin.action(permissions=["change"], description=_("Flush expired tokens"))
+    def flush_expired_tokens(self, request, queryset):
+        call_command("flushexpiredtokens")
+        self.message_user(request, "Flushed expired tokens.")
+
+    # Override the changelist_view method to bypass the "no items selected" validation
+    def changelist_view(self, request, extra_context=None):
+        """
+        Override the default behavior to allow running the custom command
+        without explicitly selecting any items.
+        """
+        if (
+            "action" in request.POST
+            and request.POST["action"] == "flush_expired_tokens"
+        ):
+            # Modify the queryset to include all items
+            queryset = self.get_queryset(request)
+            self.flush_expired_tokens(request, queryset)
+            # Redirect to the changelist after running the command
+            return self.response_post_save_change(request, None)
+
+        return super().changelist_view(request, extra_context=extra_context)
 
     def get_queryset(self, *args, **kwargs) -> QuerySet:
         qs = super().get_queryset(*args, **kwargs)
