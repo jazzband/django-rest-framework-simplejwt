@@ -16,6 +16,10 @@ def pytest_configure():
         },
         SITE_ID=1,
         SECRET_KEY="not very secret in tests",
+        SECRET_KEY_FALLBACKS=[
+            "old not very secure secret",
+            "other old not very secure secret",
+        ],
         USE_I18N=True,
         STATIC_URL="/static/",
         ROOT_URLCONF="tests.urls",

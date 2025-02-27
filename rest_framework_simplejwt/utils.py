@@ -1,17 +1,43 @@
-import hashlib
 from calendar import timegm
 from datetime import datetime, timezone
-from typing import Callable
+from typing import TYPE_CHECKING, Callable, TypeVar
 
 from django.conf import settings
+from django.contrib.auth.models import AbstractBaseUser
+from django.utils.crypto import salted_hmac
 from django.utils.functional import lazy
 
+if TYPE_CHECKING:
+    from .models import TokenUser
 
-def get_md5_hash_password(password: str) -> str:
+    AuthUser = TypeVar("AuthUser", AbstractBaseUser, TokenUser)
+
+
+def _get_token_auth_hash(user: "AuthUser", secret=None) -> str:
+    key_salt = "rest_framework_simplejwt.utils.get_token_auth_hash"
+    return salted_hmac(key_salt, user.password, secret=secret).hexdigest()
+
+
+def get_token_auth_hash(user: "AuthUser") -> str:
     """
-    Returns MD5 hash of the given password
+    Return an HMAC of the given user password field.
     """
-    return hashlib.md5(password.encode()).hexdigest().upper()
+    if hasattr(user, "get_session_auth_hash"):
+        return user.get_session_auth_hash()
+    return _get_token_auth_hash(user)
+
+
+def get_fallback_token_auth_hash(user: "AuthUser") -> str:
+    """
+    Yields a sequence of fallback HMACs of the given user password field.
+    """
+    if hasattr(user, "get_session_auth_fallback_hash"):
+        yield from user.get_session_auth_fallback_hash()
+
+    fallback_keys = getattr(settings, "SECRET_KEY_FALLBACKS", [])
+    yield from (
+        _get_token_auth_hash(user, fallback_secret) for fallback_secret in fallback_keys
+    )
 
 
 def make_utc(dt: datetime) -> datetime:
