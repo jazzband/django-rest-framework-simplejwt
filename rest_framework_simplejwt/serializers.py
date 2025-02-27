@@ -2,7 +2,8 @@ from typing import Any, Optional, TypeVar
 
 from django.conf import settings
 from django.contrib.auth import authenticate, get_user_model
-from django.contrib.auth.models import AbstractBaseUser, update_last_login
+from django.contrib.auth.models import AbstractBaseUser
+from django.contrib.auth.signals import user_logged_in
 from django.utils.translation import gettext_lazy as _
 from rest_framework import exceptions, serializers
 from rest_framework.exceptions import AuthenticationFailed, ValidationError
@@ -78,7 +79,12 @@ class TokenObtainPairSerializer(TokenObtainSerializer):
         data["access"] = str(refresh.access_token)
 
         if api_settings.UPDATE_LAST_LOGIN:
-            update_last_login(None, self.user)
+            user_logged_in.send(
+                sender=self.__class__,
+                user=self.user,
+                data=data,
+                request=self.context.get("request"),
+            )
 
         return data
 
@@ -94,7 +100,12 @@ class TokenObtainSlidingSerializer(TokenObtainSerializer):
         data["token"] = str(token)
 
         if api_settings.UPDATE_LAST_LOGIN:
-            update_last_login(None, self.user)
+            user_logged_in.send(
+                sender=self.__class__,
+                user=self.user,
+                data=data,
+                request=self.context.get("request"),
+            )
 
         return data
 
