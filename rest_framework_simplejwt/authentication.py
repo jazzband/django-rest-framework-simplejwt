@@ -123,13 +123,17 @@ class JWTAuthentication(authentication.BaseAuthentication):
         """
         try:
             user_id = validated_token[api_settings.USER_ID_CLAIM]
-        except KeyError:
-            raise InvalidToken(_("Token contained no recognizable user identification"))
+        except KeyError as e:
+            raise InvalidToken(
+                _("Token contained no recognizable user identification")
+            ) from e
 
         try:
             user = self.user_model.objects.get(**{api_settings.USER_ID_FIELD: user_id})
-        except self.user_model.DoesNotExist:
-            raise AuthenticationFailed(_("User not found"), code="user_not_found")
+        except self.user_model.DoesNotExist as e:
+            raise AuthenticationFailed(
+                _("User not found"), code="user_not_found"
+            ) from e
 
         if api_settings.CHECK_USER_IS_ACTIVE and not user.is_active:
             raise AuthenticationFailed(_("User is inactive"), code="user_inactive")

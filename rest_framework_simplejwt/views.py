@@ -27,9 +27,9 @@ class TokenViewBase(generics.GenericAPIView):
             return self.serializer_class
         try:
             return import_string(self._serializer_class)
-        except ImportError:
+        except ImportError as e:
             msg = f"Could not import serializer '{self._serializer_class}'"
-            raise ImportError(msg)
+            raise ImportError(msg) from e
 
     def get_authenticate_header(self, request: Request) -> str:
         return '{} realm="{}"'.format(
@@ -43,7 +43,7 @@ class TokenViewBase(generics.GenericAPIView):
         try:
             serializer.is_valid(raise_exception=True)
         except TokenError as e:
-            raise InvalidToken(e.args[0])
+            raise InvalidToken(e.args[0]) from e
 
         return Response(serializer.validated_data, status=status.HTTP_200_OK)
 

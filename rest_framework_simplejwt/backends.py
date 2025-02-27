@@ -121,8 +121,8 @@ class TokenBackend:
         if self.jwks_client:
             try:
                 return self.jwks_client.get_signing_key_from_jwt(token).key
-            except PyJWKClientError as ex:
-                raise TokenBackendError(_("Token is invalid")) from ex
+            except PyJWKClientError as e:
+                raise TokenBackendError(_("Token is invalid")) from e
 
         return self.prepared_verifying_key
 
@@ -169,9 +169,9 @@ class TokenBackend:
                     "verify_signature": verify,
                 },
             )
-        except InvalidAlgorithmError as ex:
-            raise TokenBackendError(_("Invalid algorithm specified")) from ex
-        except ExpiredSignatureError as ex:
-            raise TokenBackendExpiredToken(_("Token is expired")) from ex
-        except InvalidTokenError as ex:
-            raise TokenBackendError(_("Token is invalid")) from ex
+        except InvalidAlgorithmError as e:
+            raise TokenBackendError(_("Invalid algorithm specified")) from e
+        except ExpiredSignatureError as e:
+            raise TokenBackendExpiredToken(_("Token is expired")) from e
+        except InvalidTokenError as e:
+            raise TokenBackendError(_("Token is invalid")) from e
