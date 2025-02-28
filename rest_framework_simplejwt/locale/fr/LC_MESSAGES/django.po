@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: djangorestframework_simplejwt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-22 17:30+0100\n"
+"POT-Creation-Date: 2025-02-28 15:09-0300\n"
 "Last-Translator: Stéphane Malta e Sousa <stephane.maltaesousa@ne.ch>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -50,7 +50,7 @@ msgid ""
 "Unrecognized type '{}', 'leeway' must be of type int, float or timedelta."
 msgstr ""
 
-#: backends.py:125 backends.py:177 tokens.py:68
+#: backends.py:125 backends.py:177 tokens.py:69
 #, fuzzy
 #| msgid "Token is invalid or expired"
 msgid "Token is invalid"
@@ -60,7 +60,7 @@ msgstr "Le jeton est invalide ou expiré"
 msgid "Invalid algorithm specified"
 msgstr "L'algorithme spécifié est invalide"
 
-#: backends.py:175 tokens.py:66
+#: backends.py:175 tokens.py:67
 #, fuzzy
 #| msgid "Token is invalid or expired"
 msgid "Token is expired"
@@ -79,6 +79,10 @@ msgstr "Aucun compte actif n'a été trouvé avec les identifiants fournis"
 #| msgid "No active account found with the given credentials"
 msgid "No active account found for the given token."
 msgstr "Aucun compte actif n'a été trouvé avec les identifiants fournis"
+
+#: serializers.py:178 tokens.py:299
+msgid "Token is blacklisted"
+msgstr "Le jeton a été banni"
 
 #: settings.py:74
 msgid ""
@@ -108,30 +112,52 @@ msgstr "Expire le"
 msgid "Token Blacklist"
 msgstr "Liste des jetons bannis"
 
-#: tokens.py:52
+#: token_blacklist/models.py:19
+msgid "Outstanding Token"
+msgstr ""
+
+#: token_blacklist/models.py:20
+msgid "Outstanding Tokens"
+msgstr ""
+
+#: token_blacklist/models.py:32
+#, python-format
+msgid "Token for %(user)s (%(jti)s)"
+msgstr ""
+
+#: token_blacklist/models.py:45
+msgid "Blacklisted Token"
+msgstr ""
+
+#: token_blacklist/models.py:46
+msgid "Blacklisted Tokens"
+msgstr ""
+
+#: token_blacklist/models.py:57
+#, python-format
+msgid "Blacklisted token for %(user)s"
+msgstr ""
+
+#: tokens.py:53
 msgid "Cannot create token with no type or lifetime"
 msgstr "Ne peut pas créer de jeton sans type ni durée de vie"
 
-#: tokens.py:126
+#: tokens.py:127
 msgid "Token has no id"
 msgstr "Le jeton n'a pas d'id"
 
-#: tokens.py:138
+#: tokens.py:139
 msgid "Token has no type"
 msgstr "Le jeton n'a pas de type"
 
-#: tokens.py:141
+#: tokens.py:142
 msgid "Token has wrong type"
 msgstr "Le jeton a un type erroné"
 
-#: tokens.py:200
+#: tokens.py:201
 msgid "Token has no '{}' claim"
 msgstr "Le jeton n'a pas le privilège '{}'"
 
-#: tokens.py:205
+#: tokens.py:206
 msgid "Token '{}' claim has expired"
 msgstr "Le privilège '{}' du jeton a expiré"
-
-#: tokens.py:292
-msgid "Token is blacklisted"
-msgstr "Le jeton a été banni"

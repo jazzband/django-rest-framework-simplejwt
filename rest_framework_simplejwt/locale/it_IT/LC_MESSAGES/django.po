@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: djangorestframework_simplejwt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-22 17:30+0100\n"
+"POT-Creation-Date: 2025-02-28 15:09-0300\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Adriano Di Dio <95adriano@gmail.com>\n"
 "Language-Team: \n"
@@ -53,7 +53,7 @@ msgid ""
 "Unrecognized type '{}', 'leeway' must be of type int, float or timedelta."
 msgstr ""
 
-#: backends.py:125 backends.py:177 tokens.py:68
+#: backends.py:125 backends.py:177 tokens.py:69
 #, fuzzy
 #| msgid "Token is invalid or expired"
 msgid "Token is invalid"
@@ -63,7 +63,7 @@ msgstr "Il token non è valido o è scaduto"
 msgid "Invalid algorithm specified"
 msgstr "L'algoritmo specificato non è valido"
 
-#: backends.py:175 tokens.py:66
+#: backends.py:175 tokens.py:67
 #, fuzzy
 #| msgid "Token is invalid or expired"
 msgid "Token is expired"
@@ -82,6 +82,10 @@ msgstr "Nessun account attivo trovato con queste credenziali"
 #| msgid "No active account found with the given credentials"
 msgid "No active account found for the given token."
 msgstr "Nessun account attivo trovato con queste credenziali"
+
+#: serializers.py:178 tokens.py:299
+msgid "Token is blacklisted"
+msgstr "Il token è stato inserito nella blacklist"
 
 #: settings.py:74
 msgid ""
@@ -111,30 +115,52 @@ msgstr "scade il"
 msgid "Token Blacklist"
 msgstr "Blacklist dei token"
 
-#: tokens.py:52
+#: token_blacklist/models.py:19
+msgid "Outstanding Token"
+msgstr ""
+
+#: token_blacklist/models.py:20
+msgid "Outstanding Tokens"
+msgstr ""
+
+#: token_blacklist/models.py:32
+#, python-format
+msgid "Token for %(user)s (%(jti)s)"
+msgstr ""
+
+#: token_blacklist/models.py:45
+msgid "Blacklisted Token"
+msgstr ""
+
+#: token_blacklist/models.py:46
+msgid "Blacklisted Tokens"
+msgstr ""
+
+#: token_blacklist/models.py:57
+#, python-format
+msgid "Blacklisted token for %(user)s"
+msgstr ""
+
+#: tokens.py:53
 msgid "Cannot create token with no type or lifetime"
 msgstr "Impossibile creare un token senza tipo o durata"
 
-#: tokens.py:126
+#: tokens.py:127
 msgid "Token has no id"
 msgstr "Il token non ha un id"
 
-#: tokens.py:138
+#: tokens.py:139
 msgid "Token has no type"
 msgstr "Il token non ha un tipo"
 
-#: tokens.py:141
+#: tokens.py:142
 msgid "Token has wrong type"
 msgstr "Il token ha un tipo sbagliato"
 
-#: tokens.py:200
+#: tokens.py:201
 msgid "Token has no '{}' claim"
 msgstr "Il token non contiene il parametro '{}'"
 
-#: tokens.py:205
+#: tokens.py:206
 msgid "Token '{}' claim has expired"
 msgstr "Il parametro '{}' del token è scaduto"
-
-#: tokens.py:292
-msgid "Token is blacklisted"
-msgstr "Il token è stato inserito nella blacklist"

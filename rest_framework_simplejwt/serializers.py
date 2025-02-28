@@ -175,7 +175,7 @@ class TokenVerifySerializer(serializers.Serializer):
         ):
             jti = token.get(api_settings.JTI_CLAIM)
             if BlacklistedToken.objects.filter(token__jti=jti).exists():
-                raise ValidationError("Token is blacklisted")
+                raise ValidationError(_("Token is blacklisted"))
 
         return {}
 

@@ -1,5 +1,6 @@
 from django.conf import settings
 from django.db import models
+from django.utils.translation import gettext_lazy as _
 
 
 class OutstandingToken(models.Model):
@@ -15,6 +16,8 @@ class OutstandingToken(models.Model):
     expires_at = models.DateTimeField()
 
     class Meta:
+        verbose_name = _("Outstanding Token")
+        verbose_name_plural = _("Outstanding Tokens")
         # Work around for a bug in Django:
         # https://code.djangoproject.com/ticket/19422
         #
@@ -26,10 +29,10 @@ class OutstandingToken(models.Model):
         ordering = ("user",)
 
     def __str__(self) -> str:
-        return "Token for {} ({})".format(
-            self.user,
-            self.jti,
-        )
+        return _("Token for %(user)s (%(jti)s)") % {
+            "user": self.user,
+            "jti": self.jti,
+        }
 
 
 class BlacklistedToken(models.Model):
@@ -39,6 +42,8 @@ class BlacklistedToken(models.Model):
     blacklisted_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
+        verbose_name = _("Blacklisted Token")
+        verbose_name_plural = _("Blacklisted Tokens")
         # Work around for a bug in Django:
         # https://code.djangoproject.com/ticket/19422
         #
@@ -49,4 +54,4 @@ class BlacklistedToken(models.Model):
         )
 
     def __str__(self) -> str:
-        return f"Blacklisted token for {self.token.user}"
+        return _("Blacklisted token for %(user)s") % {"user": self.token.user}

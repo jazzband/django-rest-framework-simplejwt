@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: djangorestframework_simplejwt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-17 12:32+0300\n"
+"POT-Creation-Date: 2025-02-28 15:09-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Artiukhov Artem <defenite@meta.ua>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -52,7 +52,7 @@ msgid ""
 "Unrecognized type '{}', 'leeway' must be of type int, float or timedelta."
 msgstr ""
 
-#: backends.py:125 backends.py:177 tokens.py:68
+#: backends.py:125 backends.py:177 tokens.py:69
 #, fuzzy
 #| msgid "Token is invalid or expired"
 msgid "Token is invalid"
@@ -62,7 +62,7 @@ msgstr "Токен некоректний або термін його дії в
 msgid "Invalid algorithm specified"
 msgstr "Вказаний невірний алгоритм"
 
-#: backends.py:175 tokens.py:66
+#: backends.py:175 tokens.py:67
 #, fuzzy
 #| msgid "Token is invalid or expired"
 msgid "Token is expired"
@@ -81,6 +81,10 @@ msgstr "Не знайдено жодного облікового запису �
 #| msgid "No active account found with the given credentials"
 msgid "No active account found for the given token."
 msgstr "Не знайдено жодного облікового запису по наданих облікових даних"
+
+#: serializers.py:178 tokens.py:299
+msgid "Token is blacklisted"
+msgstr "Токен занесений у чорний список"
 
 #: settings.py:74
 msgid ""
@@ -108,30 +112,52 @@ msgstr "дійстний по"
 msgid "Token Blacklist"
 msgstr "Чорний список токенів"
 
-#: tokens.py:52
+#: token_blacklist/models.py:19
+msgid "Outstanding Token"
+msgstr ""
+
+#: token_blacklist/models.py:20
+msgid "Outstanding Tokens"
+msgstr ""
+
+#: token_blacklist/models.py:32
+#, python-format
+msgid "Token for %(user)s (%(jti)s)"
+msgstr ""
+
+#: token_blacklist/models.py:45
+msgid "Blacklisted Token"
+msgstr ""
+
+#: token_blacklist/models.py:46
+msgid "Blacklisted Tokens"
+msgstr ""
+
+#: token_blacklist/models.py:57
+#, python-format
+msgid "Blacklisted token for %(user)s"
+msgstr ""
+
+#: tokens.py:53
 msgid "Cannot create token with no type or lifetime"
 msgstr "Неможливо створити токен без типу або строку дії"
 
-#: tokens.py:126
+#: tokens.py:127
 msgid "Token has no id"
 msgstr "У ключі доступу не міститься id"
 
-#: tokens.py:138
+#: tokens.py:139
 msgid "Token has no type"
 msgstr "У ключі доступу не міститься тип"
 
-#: tokens.py:141
+#: tokens.py:142
 msgid "Token has wrong type"
 msgstr "токен позначений невірним типом"
 
-#: tokens.py:200
+#: tokens.py:201
 msgid "Token has no '{}' claim"
 msgstr "У токені не міститься '{}' заголовку"
 
-#: tokens.py:205
+#: tokens.py:206
 msgid "Token '{}' claim has expired"
 msgstr "Заголовок '{}' токена не дійсний"
-
-#: tokens.py:292
-msgid "Token is blacklisted"
-msgstr "Токен занесений у чорний список"
