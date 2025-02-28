@@ -53,7 +53,7 @@ msgstr ""
 "Tipul '{}' nu este recunoscut, 'leeway' trebuie să fie de tip int, float sau "
 "timedelta."
 
-#: backends.py:125 backends.py:177 tokens.py:68
+#: backends.py:125 backends.py:177 tokens.py:69
 #, fuzzy
 #| msgid "Token is invalid or expired"
 msgid "Token is invalid"
@@ -63,7 +63,7 @@ msgstr "Token nu este valid sau a expirat"
 msgid "Invalid algorithm specified"
 msgstr "Algoritm nevalid specificat"
 
-#: backends.py:175 tokens.py:66
+#: backends.py:175 tokens.py:67
 #, fuzzy
 #| msgid "Token is invalid or expired"
 msgid "Token is expired"
@@ -110,30 +110,30 @@ msgstr "expiră la"
 msgid "Token Blacklist"
 msgstr "Listă de token-uri blocate"
 
-#: tokens.py:52
+#: tokens.py:53
 msgid "Cannot create token with no type or lifetime"
 msgstr "Nu se poate crea token fără tip sau durată de viață"
 
-#: tokens.py:126
+#: tokens.py:127
 msgid "Token has no id"
 msgstr "Tokenul nu are id"
 
-#: tokens.py:138
+#: tokens.py:139
 msgid "Token has no type"
 msgstr "Tokenul nu are tip"
 
-#: tokens.py:141
+#: tokens.py:142
 msgid "Token has wrong type"
 msgstr "Tokenul are tipul greșit"
 
-#: tokens.py:200
+#: tokens.py:201
 msgid "Token has no '{}' claim"
 msgstr "Tokenul nu are reclamația '{}'"
 
-#: tokens.py:205
+#: tokens.py:206
 msgid "Token '{}' claim has expired"
 msgstr "Reclamația tokenului '{}' a expirat"
 
-#: tokens.py:292
+#: tokens.py:299
 msgid "Token is blacklisted"
 msgstr "Tokenul este în listă de tokenuri blocate"

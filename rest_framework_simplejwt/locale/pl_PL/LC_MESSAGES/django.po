@@ -48,7 +48,7 @@ msgid ""
 "Unrecognized type '{}', 'leeway' must be of type int, float or timedelta."
 msgstr ""
 
-#: backends.py:125 backends.py:177 tokens.py:68
+#: backends.py:125 backends.py:177 tokens.py:69
 #, fuzzy
 #| msgid "Token is invalid or expired"
 msgid "Token is invalid"
@@ -58,7 +58,7 @@ msgstr "Token jest niepoprawny lub wygasł"
 msgid "Invalid algorithm specified"
 msgstr ""
 
-#: backends.py:175 tokens.py:66
+#: backends.py:175 tokens.py:67
 #, fuzzy
 #| msgid "Token is invalid or expired"
 msgid "Token is expired"
@@ -105,30 +105,30 @@ msgstr "wygasa o"
 msgid "Token Blacklist"
 msgstr "Token Blacklist"
 
-#: tokens.py:52
+#: tokens.py:53
 msgid "Cannot create token with no type or lifetime"
 msgstr "Nie można utworzyć tokena bez podanego typu lub żywotności"
 
-#: tokens.py:126
+#: tokens.py:127
 msgid "Token has no id"
 msgstr "Token nie posiada numeru identyfikacyjnego"
 
-#: tokens.py:138
+#: tokens.py:139
 msgid "Token has no type"
 msgstr "Token nie posiada typu"
 
-#: tokens.py:141
+#: tokens.py:142
 msgid "Token has wrong type"
 msgstr "Token posiada zły typ"
 
-#: tokens.py:200
+#: tokens.py:201
 msgid "Token has no '{}' claim"
 msgstr "Token nie posiada upoważnienia '{}'"
 
-#: tokens.py:205
+#: tokens.py:206
 msgid "Token '{}' claim has expired"
 msgstr "Upoważnienie tokena '{}' wygasło"
 
-#: tokens.py:292
+#: tokens.py:299
 msgid "Token is blacklisted"
 msgstr "Token znajduję się na czarnej liście"
