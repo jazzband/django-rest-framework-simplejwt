@@ -112,12 +112,13 @@ class TokenRefreshSerializer(serializers.Serializer):
         refresh = self.token_class(attrs["refresh"])
 
         user_id = refresh.payload.get(api_settings.USER_ID_CLAIM, None)
-        if user_id and (
-            user := get_user_model().objects.get(
-                **{api_settings.USER_ID_FIELD: user_id}
+        if user_id:
+            user = (
+                get_user_model()
+                .objects.filter(**{api_settings.USER_ID_FIELD: user_id})
+                .first()
             )
-        ):
-            if not api_settings.USER_AUTHENTICATION_RULE(user):
+            if not user or not api_settings.USER_AUTHENTICATION_RULE(user):
                 raise AuthenticationFailed(
                     self.error_messages["no_active_account"],
                     "no_active_account",

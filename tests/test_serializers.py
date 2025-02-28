@@ -4,7 +4,6 @@ from unittest.mock import MagicMock, patch
 
 from django.conf import settings
 from django.contrib.auth import get_user_model
-from django.core import exceptions as django_exceptions
 from django.test import TestCase, override_settings
 from rest_framework import exceptions as drf_exceptions
 
@@ -286,10 +285,10 @@ class TestTokenRefreshSerializer(TestCase):
 
         s = TokenRefreshSerializer(data={"refresh": str(refresh)})
 
-        with self.assertRaises(django_exceptions.ObjectDoesNotExist) as e:
+        with self.assertRaises(drf_exceptions.AuthenticationFailed) as e:
             s.is_valid()
 
-        self.assertIn("does not exist", str(e.exception))
+        self.assertIn("No active account", str(e.exception))
 
     def test_it_should_raise_error_for_inactive_users(self):
         refresh = RefreshToken.for_user(self.user)

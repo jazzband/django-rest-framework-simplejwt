@@ -167,7 +167,7 @@ class JWTStatelessUserAuthentication(JWTAuthentication):
 JWTTokenUserAuthentication = JWTStatelessUserAuthentication
 
 
-def default_user_authentication_rule(user: AuthUser) -> bool:
+def default_user_authentication_rule(user: Optional[AuthUser]) -> bool:
     # Prior to Django 1.10, inactive users could be authenticated with the
     # default `ModelBackend`.  As of Django 1.10, the `ModelBackend`
     # prevents inactive users from authenticating.  App designers can still
