@@ -1,3 +1,5 @@
+from typing import Optional
+
 from django.utils.module_loading import import_string
 from rest_framework import generics, status
 from rest_framework.request import Request
@@ -13,12 +15,12 @@ class TokenViewBase(generics.GenericAPIView):
     permission_classes = ()
     authentication_classes = ()
 
-    serializer_class = None
+    serializer_class: Optional[type[Serializer]] = None
     _serializer_class = ""
 
     www_authenticate_realm = "api"
 
-    def get_serializer_class(self) -> Serializer:
+    def get_serializer_class(self) -> type[Serializer]:
         """
         If serializer_class is set, use it directly. Otherwise get the class from settings.
         """
